@@ -21,7 +21,7 @@ def home():
 
         connection.close()
 
-        if data:
+        if data and password.lower()==data[1].lower():
 
             student = {
                 "name": data[1],
@@ -38,6 +38,41 @@ def home():
 
     return render_template("index.html")
 
+@app.route('/admin', methods=['GET','POST'])
+def admin_login():
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == "admin" and password == "admin123":
+
+            return render_template("admin_dashboard.html")
+
+        else:
+            return "Wrong admin details"
+
+    return render_template("admin_login.html")
+
+@app.route('/update', methods=['POST'])
+def update():
+
+    student_id = request.form['id']
+    attendance = request.form['attendance']
+
+    connection = sqlite3.connect("students.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+    "UPDATE students SET attendance=? WHERE id=?",
+    (attendance, student_id)
+    )
+
+    connection.commit()
+    connection.close()
+
+    return "Attendance updated successfully"
 
 if __name__ == '__main__':
     app.run(debug=True)
