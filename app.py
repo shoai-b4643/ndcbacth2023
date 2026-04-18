@@ -34,7 +34,7 @@ def home():
             return render_template("dashboard.html", student=student)
 
         else:
-            return "Student not found"
+            return render_template("message.html",message="STUDENT NOT FOUND")
 
     return render_template("index.html")
 
@@ -51,7 +51,7 @@ def admin_login():
             return render_template("admin_dashboard.html")
 
         else:
-            return "Wrong admin details"
+            return render_template("message.html",message="WRONG ADMIN DETAILS")
 
     return render_template("admin_login.html")
 
@@ -72,7 +72,7 @@ def update():
     connection.commit()
     connection.close()
 
-    return "Attendance updated successfully"
+    return render_template("message.html",message="ATTENDANCE UPDATED SUCCESSFULLY")
 
 if __name__ == '__main__':
     app.run(debug=True)

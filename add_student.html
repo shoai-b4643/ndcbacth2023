@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Add Student</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+}
+
+.container{
+width:400px;
+margin:auto;
+margin-top:40px;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+h1{
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#27ae60;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Add Student</h1>
+
+<form action="/add_student" method="POST">
+
+<label>Hallticket Number</label>
+<input type="text" name="id" required>
+
+<label>Full Name</label>
+<input type="text" name="name" required>
+
+<label>Attendance</label>
+<input type="text" name="attendance" required>
+
+<label>Fees</label>
+<input type="text" name="fees" required>
+
+<label>Course</label>
+<input type="text" name="course" required>
+
+<label>Photo file name</label>
+<input type="text" name="photo" required>
+
+<button>Add Student</button>
+
+</form>
+
+<br>
+
+<a href="/admin">
+<button style="background:#555;">Back</button>
+</a>
+
+</div>
+
+</body>
+
+</html>
